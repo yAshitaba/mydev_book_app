@@ -5,7 +5,7 @@ export const BOOKS: Book[] = [
     { book_id: 13, cover_image_url: 'HTML5_beginner.jpg' },
     { book_id: 14, cover_image_url: 'java_beginner.jpg' },
     { book_id: 15, cover_image_url: 'java_developer.jpg' },
-    { book_id: 16, cover_image_url: 'java_serous.jpg' },
+    { book_id: 16, cover_image_url: 'java_serious.jpg' },
     { book_id: 17, cover_image_url: 'javase_bronze.jpg' },
     { book_id: 18, cover_image_url: 'servlet_jsp.jpg' },
     { book_id: 19, cover_image_url: 'javaee_websystem.jpg' },
