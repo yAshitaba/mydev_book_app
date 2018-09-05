@@ -1,5 +1,7 @@
 {
   "name": "od1_book_app",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }
