@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ActionSheetController } from 'ionic-angular';
 import { BOOKS } from '../../app/mock-books';
 import { Book } from '../../app/book';
 
@@ -20,7 +20,8 @@ export class BookListPage {
   bookList = BOOKS;
   grid: Array<Array<Book>> = new Array<Array<Book>>();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public alertCtrl: AlertController, public actionSheetCtrl: ActionSheetController) {
   }
 
   ionViewDidLoad() {
@@ -37,7 +38,8 @@ export class BookListPage {
       title: '管理者コードを入力してください。',
       inputs: [
         {
-          name: 'adminid'
+          name: 'adminid',
+          placeholder: '0'
         }
       ],
       buttons: [
@@ -51,7 +53,8 @@ export class BookListPage {
           text: 'ログイン',
           handler: data => {
             if (data.adminid == '0') {
-              //管理者コードが適切であれば処理を実施
+              //管理者コードが適切であれば登録方法を選択させる
+              this.presentActionSheet();
             }
           }
         }
@@ -59,6 +62,36 @@ export class BookListPage {
     });
 
     alert.present();
+  }
+
+  presentActionSheet() {
+    this.actionSheetCtrl.create({
+      title: '登録方法を選択してください。',
+      buttons: [
+        {
+          text: 'バーコードスキャン登録',
+          role: 'barcode-scan-register',
+          handler: () => {
+            console.log('barcode-scan-register');
+          }
+        },
+        {
+          text: '手動登録',
+          role: 'manual-register',
+          handler: () => {
+            console.log('manual-register');
+          }
+        },
+        {
+          text: 'キャンセル',
+          role: 'cancel',
+          handler: () => {
+            console.log('cancel');
+          }
+        }
+
+      ]
+    })
   }
 
 }
