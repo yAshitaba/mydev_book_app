@@ -65,7 +65,7 @@ export class BookListPage {
   }
 
   presentActionSheet() {
-    this.actionSheetCtrl.create({
+    let actionSheet = this.actionSheetCtrl.create({
       title: '登録方法を選択してください。',
       buttons: [
         {
@@ -91,7 +91,8 @@ export class BookListPage {
         }
 
       ]
-    })
+    });
+    actionSheet.present();
   }
 
 }
