@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { BOOKS } from '../../app/mock-books';
 import { Book } from '../../app/book';
 
@@ -20,7 +20,7 @@ export class BookListPage {
   bookList = BOOKS;
   grid: Array<Array<Book>> = new Array<Array<Book>>();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
@@ -30,6 +30,35 @@ export class BookListPage {
       let row = this.bookList.slice(i, i + coulumnNum);
       this.grid.push(row);
     }
+  }
+
+  askAdminId() {
+    let alert = this.alertCtrl.create({
+      title: '管理者コードを入力してください。',
+      inputs: [
+        {
+          name: 'adminid'
+        }
+      ],
+      buttons: [
+        {
+          text: 'キャンセル',
+          role: 'cancel',
+          handler: data => {
+          }
+        },
+        {
+          text: 'ログイン',
+          handler: data => {
+            if (data.adminid == '0') {
+              //管理者コードが適切であれば処理を実施
+            }
+          }
+        }
+      ]
+    });
+
+    alert.present();
   }
 
 }
