@@ -24,8 +24,8 @@ export class BookListPage {
   }
 
   ionViewDidLoad() {
-    // 2列の一覧に表示させるための準備
-    let coulumnNum = 2; //カラム数
+    // 3列の一覧に表示させるための準備
+    let coulumnNum = 3; //カラム数
     for (let i = 0; i < this.bookList.length; i += coulumnNum) {
       let row = this.bookList.slice(i, i + coulumnNum);
       this.grid.push(row);
