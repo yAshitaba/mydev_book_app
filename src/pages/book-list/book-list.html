@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>本一覧画面</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="askAdminId()">
@@ -20,8 +20,9 @@
   <ion-grid>
     <ion-row *ngFor="let row of grid">
       <ion-col *ngFor="let book of row" col-4>
-        <!-- <img src="../../assets/imgs/{{book.cover_image_url}}" alt=""> -->
-        <img src="{{book.cover_image_url}}" alt="">
+        <button onclick="">
+          <img src="{{book.cover_image_url}}" alt="">
+        </button>
       </ion-col>
     </ion-row>
   </ion-grid>
