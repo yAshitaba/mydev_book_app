@@ -20,19 +20,34 @@ export class BookListPage {
   bookList = BOOKS;
   grid: Array<Array<Book>> = new Array<Array<Book>>();
 
+  keywords: string = "";
+
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public alertCtrl: AlertController, public actionSheetCtrl: ActionSheetController) {
   }
 
   ionViewDidLoad() {
+    // 一覧表示
+    this.showBookList(this.bookList);
+  }
+
+  /**
+   *  書籍一覧表示
+   */
+  showBookList(pBookList: Book[]) {
+    // グリッドを全削除
+    this.grid.length = 0;
     // 3列の一覧に表示させるための準備
     let coulumnNum = 3; //カラム数
-    for (let i = 0; i < this.bookList.length; i += coulumnNum) {
-      let row = this.bookList.slice(i, i + coulumnNum);
+    for (let i = 0; i < pBookList.length; i += coulumnNum) {
+      let row = pBookList.slice(i, i + coulumnNum);
       this.grid.push(row);
     }
   }
 
+  /**
+   *  管理者ログイン
+   */
   askAdminId() {
     let alert = this.alertCtrl.create({
       title: '管理者コードを入力してください。',
@@ -64,6 +79,9 @@ export class BookListPage {
     alert.present();
   }
 
+  /**
+   *  登録方法の選択メニュー表示
+   */
   presentActionSheet() {
     let actionSheet = this.actionSheetCtrl.create({
       title: '登録方法を選択してください。',
@@ -95,4 +113,14 @@ export class BookListPage {
     actionSheet.present();
   }
 
+  /**
+   *  検索処理
+   */
+  searchBooksByKeyword(ev: any) {
+    // モックのリストからキーワードにマッチする要素を削除
+    const resultBookList = this.bookList.filter(n => n.title.match(this.keywords));
+    // 一覧表示
+    this.showBookList(resultBookList);
+
+  };
 }
