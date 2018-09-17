@@ -118,7 +118,7 @@ export class BookListPage {
    */
   searchBooksByKeyword(ev: any) {
     // モックのリストからキーワードにマッチする要素を削除
-    const resultBookList = this.bookList.filter(n => n.title.match(this.keywords));
+    const resultBookList = this.bookList.filter(n => n.title.toLowerCase().match(this.keywords.toLocaleLowerCase()));
     // 一覧表示
     this.showBookList(resultBookList);
 
