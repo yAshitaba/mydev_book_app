@@ -17,7 +17,13 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-grid>
+  <!-- <ion-searchbar (ionInput)="searchBooksByKeyword($event)"></ion-searchbar> -->
+  <div class="searchbar" ion-fixed>
+    <form action="" (keyup)="searchBooksByKeyword(event)">
+      <ion-searchbar name="keywords" [(ngModel)]="keywords" placeholder="タイトルで検索"></ion-searchbar>
+    </form>
+  </div>
+  <ion-grid class='book-grid'>
     <ion-row *ngFor="let row of grid">
       <ion-col *ngFor="let book of row" col-4>
         <button onclick="">
