@@ -9,7 +9,8 @@ import { BookListPage } from '../pages/book-list/book-list';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage: any = BookListPage;
+  //  rootPage: any = BookListPage;
+  rootPage: any = HomePage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
